@@ -1,0 +1,39 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="classic-implementation.html">
+<link rel="import" href="flowbased-implementation.html">
+
+<dom-module id="showcase-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <classic-implementation></classic-implementation>
+    <flowbased-implementation></flowbased-implementation>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class ShowcaseApp extends Polymer.Element {
+      static get is() {
+        return 'showcase-app';
+      }
+
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'showcase-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ShowcaseApp.is, ShowcaseApp);
+  </script>
+</dom-module>

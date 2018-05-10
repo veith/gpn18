@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/die-lampe/die-lampe.html">
+
+<dom-module id="classic-implementation">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <die-lampe></die-lampe>
+
+  </template>
+</dom-module>
+
+
+<script>
+  /**
+   * `classicImplementation`
+   *
+   *
+   * @customElement
+   * @polymer
+   * @demo demo/index.html
+   * @mixes FBPMixin
+   */
+  class classicImplementation extends (Polymer.Element) {
+    constructor() {
+      super();
+    }
+
+    static get is() {
+      return 'classic-implementation';
+    }
+
+    static get properties() {
+      return {};
+    }
+  }
+
+  window.customElements.define(classicImplementation.is, classicImplementation);
+
+</script>

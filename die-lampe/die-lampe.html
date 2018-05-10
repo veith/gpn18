@@ -1,0 +1,125 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="die-lampe">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+        width: 90px;
+        height: 90px;
+        margin: 10px;
+        --main-lamp-color: #FFFF00;
+        --disabled-lamp-color: #ededed;
+        --helligkeit: 1;
+      }
+
+      div {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        margin: 12px;
+        background-color: transparent;
+        border-radius: 50px;
+        box-shadow: 0 0 18px var(--disabled-lamp-color), inset 0 0 18px var(--disabled-lamp-color);
+        opacity: var(--helligkeit);
+      }
+
+      div[enabled] {
+        background-color: var(--main-lamp-color);
+        box-shadow: 0 0 18px var(--main-lamp-color), inset 0 0 18px var(--main-lamp-color);
+        -webkit-animation: pulse 2s linear 1s infinite;
+      }
+
+      @-webkit-keyframes pulse {
+        0% {
+          box-shadow: 0 0 18px var(--main-lamp-color), inset 0 0 18px var(--main-lamp-color);
+        }
+        50% {
+          box-shadow: 0 0 16px var(--main-lamp-color), inset 0 0 14px var(--main-lamp-color);
+        }
+        100% {
+          box-shadow: 0 0 18px var(--main-lamp-color), inset 0 0 18px var(--main-lamp-color);
+        }
+      }
+    </style>
+    <div enabled$="[[enabled]]"></div>
+  </template>
+
+  <script>
+    /**
+     * `die-lampe`
+     * Eine Simulation einer Lampe
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class DieLampe extends Polymer.Element {
+      static get is() {
+        return 'die-lampe';
+      }
+
+      static get properties() {
+        return {
+          enabled: {
+            type: Boolean,
+            readOnly: true,
+            reflectToAttribute: true,
+            value: false
+
+          },
+          /**
+           * color
+           * Setzt die Farbe der Lampe
+           */
+          color: {
+            type: String,
+            notify: true,
+            observer: "newColor",
+            value: "#ead03c",
+          },
+          /**
+           * helligkeit
+           * Setze die Helligkeit der Lampe
+           */
+          helligkeit: {
+            type: String,
+            notify: true,
+            observer: "setHelligkeit",
+            value: 1,
+          },
+        };
+      }
+
+      /**
+       * Setze eine andere Farbe für die Lampe
+       * @param color
+       */
+      newColor(color) {
+        this.style.setProperty('--main-lamp-color', color);
+      }
+
+      setHelligkeit(helligkeit) {
+        if (helligkeit > 1) {
+          helligkeit = helligkeit / 100
+        }
+        this.style.setProperty('--helligkeit', helligkeit);
+      }
+
+      toggle() {
+        this._setEnabled(!this.enabled);
+      }
+
+      ein() {
+        this._setEnabled(!this.enabled);
+      }
+
+      aus() {
+        this._setEnabled(!this.enabled);
+      }
+    }
+
+
+    window.customElements.define(DieLampe.is, DieLampe);
+  </script>
+</dom-module>

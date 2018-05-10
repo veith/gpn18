@@ -1,0 +1,6 @@
+{
+  "name": "showcase",
+  "short_name": "showcase",
+  "start_url": "/",
+  "display": "standalone"
+}
