@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/die-lampe/die-lampe.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/flowbased-polymer/mixin.html">
+<link rel="import" href="./color-pad.html">
 
 <dom-module id="flowbased-implementation">
   <template>
@@ -12,11 +13,16 @@
     </style>
     <h3>FBP</h3>
     <paper-button raised="" @-click="--btnAClicked">On/Off</paper-button>
-    <die-lampe ƒ-toggle="--btnAClicked"></die-lampe>
-    <die-lampe ƒ-toggle="--btnBClicked"></die-lampe>
+    <die-lampe ƒ-toggle="--btnAClicked" ƒ-new-color="--newColor"></die-lampe>
+    <die-lampe ƒ-toggle="--btnBClicked" ƒ-new-color="--newColor"></die-lampe>
     <paper-button raised="" @-click="--btnBClicked">On/Off</paper-button>
-    <die-lampe ƒ-toggle="--btnBClicked"></die-lampe>
+    <die-lampe ƒ-toggle="--btnBClicked" ƒ-new-color="--newColor,--newColorC"></die-lampe>
     <hr>
+    <strong>Farbe für alle</strong>
+    <color-pad @-new-color="--newColor"></color-pad>
+    <hr>
+    <strong>Farbe für dritte</strong>
+    <color-pad @-new-color="--newColorC"></color-pad>
   </template>
 </dom-module>
 

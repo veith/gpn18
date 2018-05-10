@@ -16,6 +16,11 @@
     <paper-button raised="" on-click="_handleClickB">On/Off</paper-button>
     <die-lampe id="lampe3"></die-lampe>
     <hr>
+    <strong>Farbe für alle</strong>
+    <color-pad on-new-color="_farbeFuerAlle"></color-pad>
+    <hr>
+    <strong>Farbe für dritte</strong>
+    <color-pad on-new-color="_farbeFuerDritte"></color-pad>
   </template>
 </dom-module>
 
@@ -50,6 +55,18 @@
     _handleClickB() {
       this.$.lampe2.toggle();
       this.$.lampe3.toggle();
+    }
+
+    _farbeFuerAlle(event){
+      let farbe = event.detail;
+      this.$.lampe1.newColor(farbe);
+      this.$.lampe2.newColor(farbe);
+      this.$.lampe3.newColor(farbe);
+    }
+
+    _farbeFuerDritte(event){
+      let farbe = event.detail;
+      this.$.lampe3.newColor(farbe);
     }
   }
 

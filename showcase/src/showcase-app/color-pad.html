@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/flowbased-polymer/mixin.html">
+<link rel="import" href="../../bower_components/color-picker/color-element.html">
+
+<dom-module id="color-pad">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <color-element @-color-string-changed="^new-color(color)" color-string="{{color}}"></color-element>
+
+  </template>
+</dom-module>
+
+
+<script>
+  /**
+   * `color-pad`
+   *
+   *
+   * @customElement
+   * @polymer
+   * @demo demo/index.html
+   * @mixes FBPMixin
+   */
+  class ColorPad extends FBPMixin(Polymer.Element) {
+    constructor() {
+      super();
+    }
+
+    static get is() {
+      return 'color-pad';
+    }
+
+    static get properties() {
+      return {};
+    }
+  }
+
+  window.customElements.define(ColorPad.is, ColorPad);
+
+</script>

@@ -4,7 +4,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "die-lampe": "../die-lampe",
-    "paper-button": "^2.1.1"
+    "paper-button": "^2.1.1",
+    "color-picker": "fooloomanzoo/color-picker#^2.0.8"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
