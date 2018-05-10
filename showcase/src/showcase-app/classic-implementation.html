@@ -11,6 +11,7 @@
     </style>
     <h3>Polymer</h3>
     <die-lampe id="lampe1"></die-lampe>
+    <die-lampe id="lampe2"></die-lampe>
     <paper-button raised="" on-click="_handleClick">On/Off</paper-button>
   </template>
 </dom-module>
@@ -41,6 +42,7 @@
 
     _handleClick() {
       this.$.lampe1.toggle();
+      this.$.lampe2.toggle();
     }
   }
 
