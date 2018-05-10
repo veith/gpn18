@@ -14,6 +14,8 @@
     <die-lampe id="lampe1"></die-lampe>
     <die-lampe id="lampe2"></die-lampe>
     <paper-button raised="" on-click="_handleClickB">On/Off</paper-button>
+    <die-lampe id="lampe3"></die-lampe>
+    <hr>
   </template>
 </dom-module>
 
@@ -47,6 +49,7 @@
 
     _handleClickB() {
       this.$.lampe2.toggle();
+      this.$.lampe3.toggle();
     }
   }
 
