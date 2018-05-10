@@ -10,10 +10,10 @@
       }
     </style>
     <h3>Polymer</h3>
-    <paper-button raised="" on-click="_handleClick">On/Off</paper-button>
+    <paper-button raised="" on-click="_handleClickA">On/Off</paper-button>
     <die-lampe id="lampe1"></die-lampe>
     <die-lampe id="lampe2"></die-lampe>
-    <paper-button raised="" on-click="_handleClick">On/Off</paper-button>
+    <paper-button raised="" on-click="_handleClickB">On/Off</paper-button>
   </template>
 </dom-module>
 
@@ -41,8 +41,11 @@
       return {};
     }
 
-    _handleClick() {
+    _handleClickA() {
       this.$.lampe1.toggle();
+    }
+
+    _handleClickB() {
       this.$.lampe2.toggle();
     }
   }
