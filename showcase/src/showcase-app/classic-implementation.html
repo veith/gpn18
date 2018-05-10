@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/die-lampe/die-lampe.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 
 <dom-module id="classic-implementation">
   <template>
@@ -8,9 +9,9 @@
         display: block;
       }
     </style>
-
-    <die-lampe></die-lampe>
-
+    <h3>Polymer</h3>
+    <die-lampe id="lampe1"></die-lampe>
+    <paper-button raised="" on-click="_handleClick">On/Off</paper-button>
   </template>
 </dom-module>
 
@@ -36,6 +37,10 @@
 
     static get properties() {
       return {};
+    }
+
+    _handleClick() {
+      this.$.lampe1.toggle();
     }
   }
 
