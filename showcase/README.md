@@ -1,6 +1,6 @@
 # \<showcase\>
 
-Die einzelnen Schritte des showcases könnt ihr auch direkt auschecken und hier betrachten und vergleichen.
+Die einzelnen Schritte des showcases könnt ihr direkt auschecken um sie miteinander zu vergleichen.
 
 Macht als erstes einen `bower install`
 
