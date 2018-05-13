@@ -1,5 +1,31 @@
 # \<showcase\>
 
+Die einzelnen Schritte des showcases könnt ihr auch direkt auschecken und hier betrachten und vergleichen.
+
+Macht als erstes einen `bower install`
+
+`git checkout init` stellt den anfangszustand her.
+
+`git checkout step1` eine weitere Lampe wird hinzugefügt.
+
+`git checkout step2` erste Lampe wird entfernt.
+
+`git checkout step3` weiterer Schalter wird hinzugefügt.
+
+`git checkout step4` erste Lampe wird wieder hinzugefügt.
+
+`git checkout step5` Lampen können getrennt geschaltet werden.
+
+`git checkout step6` dritte Lampe für Gruppe B hinzugefügt.
+
+`git checkout step7` color-pad hinzugefügt und eingebaut.
+
+
+
+
+
+
+
 
 
 ## Install the Polymer-CLI
