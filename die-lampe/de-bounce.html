@@ -1,0 +1,110 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../flowbased-polymer/mixin.html">
+
+<script>
+  /**
+   * `de-bounce` is a declarative debouncer.
+   *
+   * ```
+   * <de-bounce ƒ-pulse="--clicked" @-triggered="--debounced"></de-bounce>
+   * ```
+   *
+   * @customElement
+   * @polymer
+   */
+  class DeBounce extends FBPMixin(Polymer.Element) {
+    constructor() {
+      super();
+      this._timeout = null;
+      this._data = undefined;
+    }
+
+    static get is() {
+      return 'de-bounce';
+    }
+
+    static get properties() {
+      return {
+        /**
+         * Delay duration in ms. Default is 250ms
+         *
+         */
+        duration: {type: Number, value: 250,},
+        /**
+         *  If `immediate` is true, trigger the function on the
+         *  leading edge, instead of the trailing.
+         */
+        immediate: {type: Boolean, value: false},
+        /**
+         * Set to true if you want the event bubbling
+         */
+        bubbles: {type: Boolean, value: false},
+        /**
+         * Indikator to see if debouncing is in progress
+         */
+        working: {type: Boolean, value: false, readOnly: true, notify: true}
+      }
+    }
+
+    /**
+     * Trigger the debouncer. If immediate is true, the data of the first call is sent,
+     * otherwise the data of the last call is used.
+     * @param data {*}
+     */
+    pulse(data) {
+
+      this._data = data;
+      this._setWorking(true);
+      if (this._timeout === null) {
+        if (this.immediate === false) {
+          this._timeout = setTimeout(() => {
+            this.__fire('triggered');
+            clearTimeout(this._timeout);
+            this._timeout = null;
+          }, this.duration)
+        } else {
+          // fire immediatly
+          this.__fire('triggered');
+          this._timeout = setTimeout(() => {
+            clearTimeout(this._timeout);
+            this._timeout = null;
+          }, this.duration)
+        }
+      }
+    }
+
+    /**
+     * Cancels a started de-bounce.
+     */
+    cancel(data){
+      this._data = data;
+      clearTimeout(this._timeout);
+      this._timeout = null;
+      this.__fire('canceled');
+    }
+
+    __fire(eventName) {
+      /**
+       * @event canceled
+       * Fired when debounce is canceled.
+       *
+       * detail payload: {*} data that was passed in to the cancel function
+       */
+
+       /**
+       * @event triggered
+       * Fired when debounce triggers. If immediate is true,
+       * this event will be fired at the beginning and suppress the other pulses
+        *
+       * detail payload: {*} data that was passed in to the pulse function
+       */
+      let customEvent = new Event(eventName, {composed: true, bubbles: this.bubbles});
+      customEvent.detail = this._data;
+      this._setWorking(false);
+      this.dispatchEvent(customEvent);
+    }
+  }
+
+  window.customElements.define(DeBounce.is, DeBounce);
+
+</script>

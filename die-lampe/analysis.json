@@ -1,0 +1,530 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`de-bounce` is a declarative debouncer.\n\n```\n<de-bounce ƒ-pulse=\"--clicked\" @-triggered=\"--debounced\"></de-bounce>\n```",
+      "summary": "",
+      "path": "de-bounce.html",
+      "properties": [
+        {
+          "name": "duration",
+          "type": "number",
+          "description": "Delay duration in ms. Default is 250ms",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 8
+            },
+            "end": {
+              "line": 31,
+              "column": 45
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "250"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "description": "If `immediate` is true, trigger the function on the\n leading edge, instead of the trailing.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 36,
+              "column": 8
+            },
+            "end": {
+              "line": 36,
+              "column": 48
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "bubbles",
+          "type": "boolean",
+          "description": "Set to true if you want the event bubbling",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 40,
+              "column": 8
+            },
+            "end": {
+              "line": 40,
+              "column": 46
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "working",
+          "type": "boolean",
+          "description": "Indikator to see if debouncing is in progress",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 44,
+              "column": 8
+            },
+            "end": {
+              "line": 44,
+              "column": 76
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true
+            }
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "pulse",
+          "description": "Trigger the debouncer. If immediate is true, the data of the first call is sent,\notherwise the data of the last call is used.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 53,
+              "column": 4
+            },
+            "end": {
+              "line": 73,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "data",
+              "description": "{*}"
+            }
+          ]
+        },
+        {
+          "name": "cancel",
+          "description": "Cancels a started de-bounce.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 4
+            },
+            "end": {
+              "line": 83,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "data"
+            }
+          ]
+        },
+        {
+          "name": "__fire",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 4
+            },
+            "end": {
+              "line": 104,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "eventName"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 14,
+          "column": 2
+        },
+        "end": {
+          "line": 105,
+          "column": 3
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "DeBounce",
+      "attributes": [
+        {
+          "name": "duration",
+          "description": "Delay duration in ms. Default is 250ms",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 8
+            },
+            "end": {
+              "line": 31,
+              "column": 45
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        },
+        {
+          "name": "immediate",
+          "description": "If `immediate` is true, trigger the function on the\n leading edge, instead of the trailing.",
+          "sourceRange": {
+            "start": {
+              "line": 36,
+              "column": 8
+            },
+            "end": {
+              "line": 36,
+              "column": 48
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "bubbles",
+          "description": "Set to true if you want the event bubbling",
+          "sourceRange": {
+            "start": {
+              "line": 40,
+              "column": 8
+            },
+            "end": {
+              "line": 40,
+              "column": 46
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "working",
+          "description": "Indikator to see if debouncing is in progress",
+          "sourceRange": {
+            "start": {
+              "line": 44,
+              "column": 8
+            },
+            "end": {
+              "line": 44,
+              "column": 76
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "canceled",
+          "description": "canceled\nFired when debounce is canceled.\n\ndetail payload: {*} data that was passed in to the cancel function",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "triggered",
+          "description": "triggered\nFired when debounce triggers. If immediate is true,\nthis event will be fired at the beginning and suppress the other pulses\n\ndetail payload: {*} data that was passed in to the pulse function",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "working-changed",
+          "description": "Fired when the `working` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "de-bounce"
+    },
+    {
+      "description": "`die-lampe`\nEine Simulation einer Lampe",
+      "summary": "",
+      "path": "die-lampe.html",
+      "properties": [
+        {
+          "name": "brennt",
+          "type": "boolean",
+          "description": "Ist die Lampe eingeschaltet?\nbrennt ist true wenn die Lampe brennt!",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 69,
+              "column": 10
+            },
+            "end": {
+              "line": 75,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "farbe",
+          "type": "string",
+          "description": "Setzt die Farbe der Lampe",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 10
+            },
+            "end": {
+              "line": 85,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"setzeFarbe\""
+            }
+          },
+          "defaultValue": "\"#ead03c\""
+        },
+        {
+          "name": "helligkeit",
+          "type": "string",
+          "description": "Setze die Helligkeit der Lampe",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 94,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"setHelligkeit\""
+            }
+          },
+          "defaultValue": "1"
+        }
+      ],
+      "methods": [
+        {
+          "name": "setzeFarbe",
+          "description": "Setze eine andere Farbe für die Lampe",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 102,
+              "column": 6
+            },
+            "end": {
+              "line": 104,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "color"
+            }
+          ]
+        },
+        {
+          "name": "setHelligkeit",
+          "description": "Setze die Helligkeit\n0 - 1 für % der Helligkeit\n>1 - 100 für % der Helligkeit",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 113,
+              "column": 6
+            },
+            "end": {
+              "line": 118,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "helligkeit"
+            }
+          ]
+        },
+        {
+          "name": "umschalten",
+          "description": "Schaltet ein wenn sie aus war und aus wenn sie ein war.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 6
+            },
+            "end": {
+              "line": 125,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "ein",
+          "description": "Schaltet die Lampe ein",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 130,
+              "column": 6
+            },
+            "end": {
+              "line": 132,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "aus",
+          "description": "Schaltet die Lampe aus",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 137,
+              "column": 6
+            },
+            "end": {
+              "line": 139,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 57,
+          "column": 4
+        },
+        "end": {
+          "line": 140,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "DieLampe",
+      "attributes": [
+        {
+          "name": "brennt",
+          "description": "Ist die Lampe eingeschaltet?\nbrennt ist true wenn die Lampe brennt!",
+          "sourceRange": {
+            "start": {
+              "line": 69,
+              "column": 10
+            },
+            "end": {
+              "line": 75,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "farbe",
+          "description": "Setzt die Farbe der Lampe",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 10
+            },
+            "end": {
+              "line": 85,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "helligkeit",
+          "description": "Setze die Helligkeit der Lampe",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 10
+            },
+            "end": {
+              "line": 94,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "farbe-changed",
+          "description": "Fired when the `farbe` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "helligkeit-changed",
+          "description": "Fired when the `helligkeit` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "die-lampe"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../flowbased-polymer/mixin.html">
 
 <dom-module id="die-lampe">
   <template>
@@ -42,7 +43,7 @@
         }
       }
     </style>
-    <div enabled$="[[enabled]]"></div>
+    <div enabled$="[[brennt]]"></div>
   </template>
 
   <script>
@@ -54,14 +55,19 @@
      * @polymer
      * @demo demo/index.html
      */
-    class DieLampe extends Polymer.Element {
+    class DieLampe extends FBPMixin(Polymer.Element) {
       static get is() {
         return 'die-lampe';
       }
 
       static get properties() {
         return {
-          enabled: {
+          /**
+           * Ist die Lampe eingeschaltet?
+           * brennt ist true wenn die Lampe brennt!
+           *
+           */
+          brennt: {
             type: Boolean,
             readOnly: true,
             reflectToAttribute: true,
@@ -69,17 +75,16 @@
 
           },
           /**
-           * color
            * Setzt die Farbe der Lampe
+           *
            */
-          color: {
+          farbe: {
             type: String,
             notify: true,
-            observer: "newColor",
+            observer: "setzeFarbe",
             value: "#ead03c",
           },
           /**
-           * helligkeit
            * Setze die Helligkeit der Lampe
            */
           helligkeit: {
@@ -95,10 +100,17 @@
        * Setze eine andere Farbe für die Lampe
        * @param color
        */
-      newColor(color) {
+      setzeFarbe(color) {
         this.style.setProperty('--main-lamp-color', color);
       }
 
+      /**
+       * Setze die Helligkeit
+       * 0 - 1 für % der Helligkeit
+       * >1 - 100 für % der Helligkeit
+       *
+       * @param helligkeit
+       */
       setHelligkeit(helligkeit) {
         if (helligkeit > 1) {
           helligkeit = helligkeit / 100
@@ -106,16 +118,25 @@
         this.style.setProperty('--helligkeit', helligkeit);
       }
 
-      toggle() {
-        this._setEnabled(!this.enabled);
+      /**
+       * Schaltet ein wenn sie aus war und aus wenn sie ein war.
+       */
+      umschalten() {
+        this._setBrennt(!this.brennt);
       }
 
+      /**
+       * Schaltet die Lampe ein
+       */
       ein() {
-        this._setEnabled(!this.enabled);
+        this._setBrennt(!this.brennt);
       }
 
+      /**
+       * Schaltet die Lampe aus
+       */
       aus() {
-        this._setEnabled(!this.enabled);
+        this._setBrennt(!this.brennt);
       }
     }
 

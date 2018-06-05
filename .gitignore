@@ -1,0 +1,19 @@
+# Mac
+.DS_Store
+
+#IntelliJ
+.idea
+
+# yeoman
+# node_modules
+node_modules
+report
+coverage
+build
+tmp
+
+# Log files
+*.log
+
+#bower_components
+bower_components
