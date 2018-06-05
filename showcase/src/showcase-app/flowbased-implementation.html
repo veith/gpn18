@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/die-lampe/die-lampe.html">
 <link rel="import" href="../../bower_components/flowbased-polymer/mixin.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 
 <dom-module id="flowbased-implementation">
   <template>
@@ -10,8 +11,8 @@
       }
     </style>
     <h3>FBP</h3>
-    <die-lampe ƒ-toggle="--btnClicked"></die-lampe>
-    <paper-button raised="" @-click="--btnClicked">On/Off</paper-button>
+    <die-lampe ƒ-umschalten="--btnClicked"></die-lampe>
+    <paper-button raised @-click="--btnClicked">Schalter</paper-button>
 
   </template>
 </dom-module>
