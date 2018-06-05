@@ -5,7 +5,8 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "die-lampe": "../die-lampe",
     "paper-button": "^2.1.1",
-    "furo-util": "veith/furo-util#^0.0.14"
+    "furo-util": "veith/furo-util#^0.0.14",
+    "paper-input": "^2.2.2"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

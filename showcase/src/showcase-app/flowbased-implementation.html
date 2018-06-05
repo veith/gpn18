@@ -3,6 +3,7 @@
 <link rel="import" href="../../bower_components/flowbased-polymer/mixin.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/furo-util/de-bounce.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
 <dom-module id="flowbased-implementation">
   <template>
@@ -17,7 +18,7 @@
     <de-bounce duration="2000" immediate ƒ-pulse="--schalterVorneClicked" @-triggered="--debouncedTrigger"></de-bounce>
     <hr>
     <die-lampe ƒ-umschalten="--debouncedTrigger" ƒ-aus="--allesAusTriggered"></die-lampe>
-    <die-lampe ƒ-ein="--bewegunsgmelderAusgeloest" ƒ-aus="--bwgmAus, --allesAusTriggered"
+    <die-lampe farbe="[[farbe]]" ƒ-ein="--bewegunsgmelderAusgeloest" ƒ-aus="--bwgmAus, --allesAusTriggered"
                ƒ-umschalten="--schalterHintenClicked"></die-lampe>
     <hr>
     <paper-button raised @-click="--schalterHintenClicked">Schalter</paper-button>
@@ -25,6 +26,7 @@
     <paper-button raised @-click="--bewegunsgmelderAusgeloest">Bewegunsgmelder</paper-button>
     <paper-button raised @-click="--allesAusTriggered">Alles Aus</paper-button>
 
+    <paper-input type="color" value="{{farbe}}"></paper-input>
 
   </template>
 </dom-module>
@@ -50,7 +52,12 @@
     }
 
     static get properties() {
-      return {};
+      return {
+        /**
+         * Die Farbe der hinteren Lampe
+         */
+        farbe:String
+      };
     }
   }
 
